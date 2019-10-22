@@ -1,10 +1,14 @@
 'use strict'
 
 const Disciplina = use('App/Models/Disciplina')
+const Database = use('Database')
 
 class DisciplinaController {
   async index () {
-    const disciplinas = Disciplina.all()
+    let disciplinas = Database
+      .select('disciplinas.id', 'disciplinas.descricao', 'cursos.descricao as curso')
+      .from('disciplinas')
+      .innerJoin('cursos', 'cursos.id', 'disciplinas.curso_id')
 
     return disciplinas
   }
