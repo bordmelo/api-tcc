@@ -6,7 +6,7 @@ class UserController {
   async store ({ request }) {
     const data = request.only(['nome', 'email', 'password', 'cpf', 'rg',
       'orgaoemissor', 'cep', 'logradouro', 'numero', 'bairro', 'cidade', 'uf', 'professor',
-      'formacao', 'faculdade', 'anoinicio', 'anotermino'])
+      'formacao', 'faculdade', 'anoinicio', 'nivel_acesso', 'ativo', 'anoinicio', 'anotermino'])
 
     const user = await User.create(data)
 
@@ -44,6 +44,8 @@ class UserController {
       'professor',
       'formacao',
       'faculdade',
+      'nivel_acesso',
+      'ativo',
       'anoinicio',
       'anotermino'
     ])
